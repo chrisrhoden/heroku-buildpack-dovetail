@@ -29,4 +29,5 @@ gem install bundler --install-dir $1/local/lib/gems/1.9.1 --bindir $1/local/bin
 export PATH=$1/local/bin:$PATH
 
 cd $1
+echo "bundle install --no-deployment --path=$2/bundle"
 bundle install --no-deployment --path=$2/bundle
