@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+if [ ! -f $2/dovetail.tgz ]; then
+  echo "-----> Downloading dependencies"
+  curl -o $2/dovetail.tgz > /dev/null 2>&1
+  echo "       Downloaded"
+fi
+
+if [ ! -d $2/extracted ]; then
+  echo "-----> Extracting dependencies"
+  mkdir $2/extracted
+  cd $2/extracted
+  tar xzf $2/dovetail.tgz
+  echo "       Extracted"
+fi
+
+if [ ! -d $1/local ]; then
+  mkdir $1/local
+fi
+
+echo "-----> Moving dependencies into place"
+cp -r $2/extracted/* $1/local/
+echo "       Moved"

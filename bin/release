@@ -1,0 +1,10 @@
+#!/bin/sh
+
+cat << EOF
+---
+addons:
+config_vars:
+  PATH: $1/local/bin:/usr/bin:/bin
+default_process_types:
+  dovetail: ruby -e 'puts "hi"'
+EOF
