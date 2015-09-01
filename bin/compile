@@ -2,7 +2,7 @@
 mkdir $2
 if [ ! -f $2/dovetail.tgz ]; then
   echo "-----> Downloading dependencies"
-  curl -o $2/dovetail.tgz > /dev/null 2>&1
+  curl -o $2/dovetail.tgz https://s3.amazonaws.com/ami.prx.org/HerokuBuildPack/dovetail.tgz> /dev/null 2>&1
   echo "       Downloaded"
 fi
 
