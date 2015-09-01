@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-mkdir $2
+mkdir $2 2> /dev/null
+
 if [ ! -f $2/dovetail.tgz ]; then
   echo "-----> Downloading dependencies"
   curl -o $2/dovetail.tgz https://s3.amazonaws.com/ami.prx.org/HerokuBuildPack/dovetail.tgz> /dev/null 2>&1
@@ -21,3 +22,11 @@ fi
 echo "-----> Moving dependencies into place"
 cp -r $2/extracted/* $1/local/
 echo "       Moved"
+
+echo "-----> Installing Bundler"
+gem install bundler --install-dir $1/local/lib/gems/1.9.1 --bindir $1/local/bin
+
+export PATH=$1/local/bin:$PATH
+
+cd $1
+bundle install --deployment --path=$2/rubygems
