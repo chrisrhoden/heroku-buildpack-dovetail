@@ -29,4 +29,4 @@ gem install bundler --install-dir $1/local/lib/gems/1.9.1 --bindir $1/local/bin
 export PATH=$1/local/bin:$PATH
 
 cd $1
-bundle install --deployment --path=$2/rubygems
+bundle install --path=$2/rubygems
